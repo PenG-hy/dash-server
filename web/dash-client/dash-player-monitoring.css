@@ -1,0 +1,14 @@
+video {
+    width: 640px;
+    height: 360px;
+}
+
+#container {
+    display: inline-block;
+}
+
+#container > div {
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Dash Player | Custom ABR Rules</title>
+
+    <script src="dash-client/dash.all.min.js"></script>
+    <script src="dash-client/custom-abr/LowestBitrateRule.js"></script>
+
+    <script class="code">
+        function init() {
+            var video,
+                player,
+                url = "https://dash.akamaized.net/envivio/EnvivioDash3/manifest.mpd";
+
+            player = dashjs.MediaPlayer().create();
+
+            // don't use dash.js default rules
+            player.useDefaultABRRules(false);
+
+            // add my custom quality switch rule. Look at LowestBitrateRule.js to know more
+            // about the structure of a custom rule
+            player.addABRCustomRule('qualitySwitchRules', 'LowestBitrateRule', LowestBitrateRule);
+
+            player.initialize(document.querySelector("#videoPlayer"), url, true);
+        }
+    </script>
+
+    <style>
+        video {
+            width: 640px;
+            height: 360px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <video id="videoPlayer" controls></video>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            init();
+        });
+    </script>
+</body>
+</html>
+
+

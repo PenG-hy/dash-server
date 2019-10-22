@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Dash Player | Monitoring</title>
+
+    <script src="dash-client/dash.all.min.js"></script>
+    <script src="dash-client/dash-player-monitoring.js"></script>
+    <script src="dash-client/custom-abr/LowestBitrateRule.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="dash-client/dash-player-monitoring.css">
+</head>
+<body>
+<div id="container">
+    <div class="video-container">
+        <video  data-dashjs-player autoplay controls="true">
+        </video>
+    </div>
+    <div>
+        <strong>Reported bitrate:</strong>
+        <span id="reportedBitrate"></span>
+        <br />
+        <strong>Buffer level:</strong>
+        <span id="bufferLevel"></span>
+        <div id="chrome-only">
+            <strong>Calculated bitrate:</strong>
+            <span id="calculatedBitrate"></span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

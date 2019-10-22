@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Dash Player | Basic</title>
+        <style>
+            video {
+                width: 640px;
+                height: 360px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <video id="videoPlayer" controls></video>
+        </div>
+        <script src="dash-client/dash.all.min.js"></script>
+        <!-- Dash.js sample - Basic -->
+        <script>
+            (function(){
+                var url = "https://dash.akamaized.net/envivio/EnvivioDash3/manifest.mpd";
+                var player = dashjs.MediaPlayer().create();
+                player.initialize(document.querySelector("#videoPlayer"), url, true);
+            })();
+        </script>
+    </body>
+</html>
