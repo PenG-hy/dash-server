@@ -7,20 +7,21 @@ function initPlayer(videoId) {
 
     video = document.querySelector("video");
     player = dashjs.MediaPlayer().create();
+    console.log(url);
 
     //////////////////////////////////////
     // add custom abr rule
     //////////////////////////////////////
     // don't use dash.js default rules
-    player.useDefaultABRRules(false);
+    // player.useDefaultABRRules(false);
 
-    // add my custom quality switch rule. Look at LowestBitrateRule.js to know more
-    // about the structure of a custom rule
-    player.addABRCustomRule('qualitySwitchRules', 'LowestBitrateRule', LowestBitrateRule);
+    // // add my custom quality switch rule. Look at LowestBitrateRule.js to know more
+    // // about the structure of a custom rule
+    // player.addABRCustomRule('qualitySwitchRules', 'LowestBitrateRule', LowestBitrateRule);
     // end customer abr rule
     
     player.initialize(video, url, true);
-    player.getDebug().setLogToBrowserConsole(false);
+    player.getDebug().setLogToBrowserConsole(true);
     player.on(dashjs.MediaPlayer.events["PLAYBACK_ENDED"], function() {
         clearInterval(eventPoller);
         clearInterval(bitrateCalculator);
